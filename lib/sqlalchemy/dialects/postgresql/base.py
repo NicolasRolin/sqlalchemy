@@ -1464,6 +1464,10 @@ class PGCompiler(compiler.SQLCompiler):
                 if escape else ''
             )
 
+    def visit_empty_set_expr(self, type=INTEGER):
+        return 'SELECT CAST(NULL AS %s) ' \
+               'FROM (SELECT 1) as placeholder_table WHERE 1!=1' % type
+
     def render_literal_value(self, value, type_):
         value = super(PGCompiler, self).render_literal_value(value, type_)
 

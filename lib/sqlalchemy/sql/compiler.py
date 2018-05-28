@@ -1058,7 +1058,7 @@ class SQLCompiler(Compiled):
                 self._emit_empty_in_warning()
             return self.process(binary.left == binary.left)
 
-    def visit_empty_set_expr(self):
+    def visit_empty_set_expr(self, type=None):
         return 'SELECT 1 FROM (SELECT 1) as placeholder_table WHERE 1!=1'
     
     def visit_binary(self, binary, override_operator=None,

@@ -735,7 +735,7 @@ class DefaultExecutionContext(interfaces.ExecutionContext):
                     to_update = []
                     replacement_expressions[name] = (
                         self.dialect.statement_compiler(self.dialect, None)
-                            .visit_empty_set_expr()
+                            .visit_empty_set_expr(type=parameter.type)
                     )
                 
                 elif isinstance(values[0], (tuple, list)):
